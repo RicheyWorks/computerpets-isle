@@ -1,36 +1,44 @@
 # Isle
 
-**Pet Survival Island** — Open-world craft-survival driven by what your pets can actually do.
+**Pet Survival Island** — A planned island survival game where pet abilities become tools for exploration and crafting.
 
 Part of [ComputerPets](https://github.com/RicheyWorks/computerpets). Map: [computerpets-ecosystem](https://github.com/RicheyWorks/computerpets-ecosystem).
 
-| | |
+[Status](#status) · [Design](docs/DESIGN.md) · [Contributor start](#contributor-start) · [Ecosystem](https://github.com/RicheyWorks/computerpets-ecosystem)
+
+| Project | At a glance |
 | --- | --- |
-| Status | Design scaffold — loop and engine frozen |
+| Status | Design scaffold; not runnable yet |
 | License | MIT |
 | Tokens | Minigames never mint or burn. Tired overlay, not a dead lineage. |
-| First pet | [Meet Rui first](https://github.com/RicheyWorks/computerpets/blob/main/docs/START-HERE.md). This game is optional. |
+| First pet | [Flagship start guide](https://github.com/RicheyWorks/computerpets/blob/main/docs/START-HERE.md) |
 
-## The loop
+## Status
+
+This repository contains a [design](docs/DESIGN.md) and a [source placeholder](src/README.txt). It has no runnable application, build manifest, automated tests, or CI workflow.
+
+The experience, interfaces, integrations, and safeguards below are **implementation plans**, not supported features. The first implementation slice defines the initial contribution target.
+
+## Planned experience
 
 You are not a naked human. Rui climbs, Paint scouts water, Reed clears bugs. Isle is a long session; overlay pets used here are 'camping' and hidden on the desktop.
 
-## Who plays
+## Intended audience
 
 Long-session players. Overlay pets are 'camping' and hidden on the desktop.
 
-## What it is not
+## Out of scope
 
 Default PvP. Not a human-survivor sim — pets are the tools.
 
-## Genre and engine
+## Planned genre and engine
 
 - Genre: **Open-world survival**
 - Engine: **Unreal Engine**
 - Stack: Unreal Engine 5 · craft/survival · pet abilities as tools · optional dedicated server
-- Default surface: `7777`
+- Proposed surface: `7777`
 
-## Architecture
+## Proposed integration
 
 ```mermaid
 flowchart LR
@@ -39,42 +47,42 @@ flowchart LR
   quarry --> isle
 ```
 
-## How you play
+## Proposed play loop
 
 1. Drop on a canon-biome island.
 2. Assign pets as tools (dig, fish, watch).
 3. Night = sleep care or mood drop.
 4. Extract = bring craft unlocks home, not a new species.
 
-## First slice
+## First implementation slice
 
-Build this and stop.
+Initial implementation target:
 
 **Drop, assign Rui as climber, extract a craft unlock, auto-recall 15m on quit.**
 
-You know it works when: Quit without extract: auto-recall. Server crash: local snapshot. PvP off.
+Acceptance targets: Quit without extract: auto-recall. Server crash: local snapshot. PvP off.
 
-## Environment
+## Planned environment
 
 UE5
 
-## Failure doctrine
+## Planned safeguards
 
 Pet leftover on island after quit → auto-recall 15m. Dedicated server crash → local snapshot. PvP off by default.
 
-Canon rules that never yield:
+Design constraints:
 
 - 210 living kinds. No illegal hybrids.
 - Overlay pets can get tired, sick, or hide. Tokens are not burned by a minigame.
 - Desktop walk stays the main quest. Closing Isle must leave Rui walking.
 
-## Neighbors
+## Related projects
 
-- computerpets-hearth (camp)
-- computerpets-acre
-- computerpets-quarry
-- computerpets-visitation
-- computerpets-lore
+- [computerpets-hearth](https://github.com/RicheyWorks/computerpets-hearth) (camp)
+- [computerpets-acre](https://github.com/RicheyWorks/computerpets-acre)
+- [computerpets-quarry](https://github.com/RicheyWorks/computerpets-quarry)
+- [computerpets-visitation](https://github.com/RicheyWorks/computerpets-visitation)
+- [computerpets-lore](https://github.com/RicheyWorks/computerpets-lore)
 
 ## Layout
 
@@ -86,13 +94,18 @@ computerpets-isle/
   src/                implementation lands here
 ```
 
-## Run (Windows)
+## Contributor start
+
+With Git and PowerShell, clone the scaffold and read its design and source marker:
 
 ```powershell
-UE5: open Isle.uproject. Server: IsleServer.exe -port=7777
+git clone https://github.com/RicheyWorks/computerpets-isle.git
+Set-Location computerpets-isle
+Get-Content .\docs\DESIGN.md
+Get-Content .\src\README.txt
 ```
 
-Meet Rui first via the [flagship start-here](https://github.com/RicheyWorks/computerpets/blob/main/docs/START-HERE.md). This game is optional.
+Start with the [first implementation slice](#first-implementation-slice). Add the minimum project setup and tests needed for that slice, then document verified run commands. The proposed stack above is a design choice; there is no install or launch command for this checkout yet.
 
 ## Links
 
